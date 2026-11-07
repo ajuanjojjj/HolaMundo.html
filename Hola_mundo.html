@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOLA MUNDO!!! 💥</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+
+:root {
+  --pink: #ff00c8;
+  --blue: #00eaff;
+  --green: #00ff73;
+  --yellow: #fff700;
+  --purple: #8c00ff;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #05000d;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: crosshair;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: -3;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      #18002f 0deg 10deg,
+      #05000d 10deg 20deg
+    );
+  animation: rotateBg 80s linear infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    rgba(0,0,0,.15) 2px,
+    transparent 4px
+  );
+  opacity: .35;
+}
+
+@keyframes rotateBg {
+  to { transform: rotate(360deg); }
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  box-shadow: 0 0 15px currentColor;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(110vh) scale(0); }
+  50% { transform: translateY(50vh) scale(1); }
+  to { transform: translateY(-10vh) scale(0); }
+}
+
+header {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: Orbitron;
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: 0 0 15px var(--green);
+  letter-spacing: 4px;
+}
+
+.status {
+  font-family: 'Press Start 2P';
+  font-size: 9px;
+  color: var(--green);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: .2; }
+}
+
+.hero {
+  min-height: 83vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px 15px;
+  position: relative;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-family: Orbitron;
+  letter-spacing: 8px;
+  font-size: clamp(10px, 2vw, 15px);
+  text-shadow: 0 0 15px var(--blue);
+  animation: fadeIn 2s ease both;
+}
+
+h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(50px, 12vw, 160px);
+  line-height: .95;
+  font-weight: 900;
+  margin: 35px 0;
+  letter-spacing: -8px;
+  background: linear-gradient(
+    90deg,
+    #ff00c8,
+    #fff700,
+    #00eaff,
+    #00ff73,
+    #ff00c8
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 5s linear infinite, entrance 1.5s cubic-bezier(.2,1.5,.5,1);
+  filter: drop-shadow(0 0 20px #ff00c8);
+}
+
+@keyframes rainbow {
+  to { background-position: 400%; }
+}
+
+@keyframes entrance {
+  from { transform: scale(0) rotate(-15deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.subtitle {
+  font-size: clamp(16px, 3vw, 25px);
+  color: #e8caff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px var(--purple);
+}
+
+.mega-button {
+  margin-top: 45px;
+  padding: 24px 45px;
+  border: 3px solid white;
+  background: linear-gradient(120deg, #ff00c8, #6500ff, #00c8ff);
+  background-size: 200%;
+  color: white;
+  font-family: Orbitron;
+  font-size: clamp(13px, 2vw, 19px);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow:
+    0 0 15px var(--pink),
+    0 0 40px var(--purple),
+    0 0 80px var(--blue);
+  transition: .3s;
+  animation: buttonPulse 2s infinite alternate;
+}
+
+.mega-button:hover {
+  transform: scale(1.2) rotate(-2deg);
+  background-position: right;
+  box-shadow: 0 0 30px white, 0 0 100px var(--pink);
+}
+
+@keyframes buttonPulse {
+  to { box-shadow: 0 0 30px var(--blue), 0 0 70px var(--pink); }
+}
+
+.marquee {
+  overflow: hidden;
+  border-block: 2px solid var(--pink);
+  background: rgba(255,0,200,.08);
+  padding: 15px 0;
+  transform: rotate(-2deg) scale(1.05);
+  margin: 50px 0;
+}
+
+.marquee span {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: Orbitron;
+  font-weight: 900;
+  font-size: 25px;
+  color: var(--yellow);
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-family: Orbitron;
+  font-size: clamp(25px, 5vw, 55px);
+  color: var(--blue);
+  text-shadow: 0 0 25px var(--blue);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.card {
+  border: 1px solid var(--pink);
+  background: rgba(30,0,55,.7);
+  padding: 35px 20px;
+  border-radius: 15px;
+  transition: .3s;
+  box-shadow: 0 0 20px rgba(255,0,200,.2);
+}
+
+.card:hover {
+  transform: translateY(-15px) rotate(2deg) scale(1.04);
+  box-shadow: 0 0 35px var(--pink);
+  border-color: var(--blue);
+}
+
+.card .emoji {
+  font-size: 65px;
+  display: block;
+  margin-bottom: 20px;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+.card h3 {
+  color: var(--yellow);
+  font-family: Orbitron;
+}
+
+.card p { color: #cbb9e9; }
+
+.counter {
+  font-family: 'Press Start 2P';
+  font-size: clamp(18px, 5vw, 45px);
+  color: var(--green);
+  text-shadow: 0 0 25px var(--green);
+  margin: 40px;
+}
+
+.glitch {
+  font-family: 'Press Start 2P';
+  font-size: clamp(12px, 3vw, 25px);
+  color: white;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { text-shadow: 3px 0 red, -3px 0 cyan; }
+  25% { text-shadow: -3px 2px magenta, 3px -2px lime; }
+  50% { text-shadow: 3px -3px cyan, -3px 3px red; }
+  75% { text-shadow: -2px 0 yellow, 2px 0 blue; }
+}
+
+footer {
+  text-align: center;
+  padding: 65px 20px;
+  border-top: 1px solid var(--purple);
+  color: #ae89d4;
+}
+
+footer strong {
+  color: var(--pink);
+}
+
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(150px);
+  padding: 18px 25px;
+  background: #ff00c8;
+  color: white;
+  font-family: Orbitron;
+  font-weight: 900;
+  box-shadow: 0 0 30px var(--pink);
+  z-index: 200;
+  transition: .4s;
+  text-align: center;
+  width: max-content;
+  max-width: 90%;
+}
+
+#toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:600px) {
+  h1 { letter-spacing: -4px; }
+  .mega-button { padding: 18px 25px; }
+}
+</style>
+</head>
+
+<body onclick="burst(event)">
+
+<div id="particles"></div>
+
+<main>
+
+<section class="hero">
+
+  <div class="eyebrow">
+    ✦ THE INTERNET WILL NEVER BE THE SAME ✦
+  </div>
+
+  <h1>HOLA<br>MUNDO<span style="color:white">!</span></h1>
+
+  <div class="subtitle">
+    WELCOME TO THE ABSOLUTE FUTURE.
+  </div>
+</section>
+
+<div class="marquee">
+  <span>
+    ★ HOLA MUNDO ★ WELCOME TO THE CHAOS ★ HOLA MUNDO ★
+    NITE GUAPO ★ HOLA MUNDO ★ NITE GUAPO ★
+  </span>
+</div>
+
+</main>
+
+<footer>
+  <p>HECHO CON ENERGÍA <strong>1000% INNECESARIA</strong></p>
+  <p>© 2026 NITE GUAPO INDUSTRIES™</p>
+</footer>
+
+<div id="toast">🚀 ABSOLUTE LEGEND STATUS ACHIEVED 🚀</div>
+
+<script>
+
+// GENERATE FLOATING PARTICLES
+const particleContainer = document.getElementById('particles');
+const colors = ['#ff00c8','#00eaff','#00ff73','#fff700','#8c00ff'];
+
+for(let i=0; i<90; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+
+  const size = Math.random()*5+2;
+  p.style.width = size+'px';
+  p.style.height = size+'px';
+  p.style.left = Math.random()*100+'%';
+  p.style.background = colors[Math.floor(Math.random()*colors.length)];
+  p.style.color = p.style.background;
+  p.style.animationDuration = (Math.random()*15+8)+'s';
+  p.style.animationDelay = (-Math.random()*20)+'s';
+
+  particleContainer.appendChild(p);
+}
+
+// AWESOME METER
+let power = 0;
+
+function increasePower() {
+  power += Math.floor(Math.random()*5000)+1000;
+
+  document.getElementById('counter').textContent =
+    power.toLocaleString()+'%';
+
+  burst();
+}
+
+// EXPLOSION EFFECT
+function burst(event) {
+  const originX = event.clientX;
+  const originY = event.clientY;
+
+  for(let i=0; i<35; i++) {
+    const spark = document.createElement('div');
+    spark.style.position = 'fixed';
+    spark.style.left = originX + 'px';
+    spark.style.top = originY + 'px';
+    spark.style.width = '7px';
+    spark.style.height = '7px';
+    spark.style.borderRadius = '50%';
+    spark.style.background =
+      colors[Math.floor(Math.random()*colors.length)];
+    spark.style.boxShadow = '0 0 15px currentColor';
+    spark.style.zIndex = '150';
+    spark.style.pointerEvents = 'none';
+
+    document.body.appendChild(spark);
+
+    const angle = Math.random()*Math.PI*2;
+    const distance = Math.random()*350+80;
+    const x = Math.cos(angle)*distance;
+    const y = Math.sin(angle)*distance;
+
+    spark.animate([
+      { transform:'translate(-50%,-50%) scale(1)', opacity:1 },
+      { transform:`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(0)`, opacity:0 }
+    ], {
+      duration: 1000+Math.random()*500,
+      easing:'cubic-bezier(.1,.8,.3,1)'
+    }).onfinish = () => spark.remove();
+  }
+}
+
+// TOAST MESSAGE
+let toastTimer;
+
+// MOUSE GLOW
+document.addEventListener('mousemove', e => {
+  document.body.style.background =
+    `radial-gradient(circle 350px at ${e.clientX}px ${e.clientY}px, rgba(120,0,255,.12), transparent), #05000d`;
+});
+
+// RANDOM CONSOLE MESSAGE
+console.log('%c🚀 HOLA MUNDO 🚀', 'font-size:40px;color:#ff00c8;font-weight:bold');
+console.log('%cYOU FOUND THE DEVELOPER ZONE.', 'font-size:18px;color:#00eaff');
+
+</script>
+
+</body>
+</html>
